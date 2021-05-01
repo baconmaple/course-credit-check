@@ -1,1 +1,71 @@
-<p>profile works!</p>
+<div *ngIf="userProfile" class="profile-container">
+    <table>
+        <tbody>
+            <tr>
+                <td>Student Id</td>
+                <td>{{ userProfile.student_id }}</td>
+            </tr>
+            <tr>
+                <td>ID Card No.</td>
+                <td>1101700123456</td>
+            </tr>
+            <tr>
+                <td>Prename (TH)</td>
+                <td>นาย</td>
+            </tr>
+            <tr>
+                <td>Name (TH)</td>
+                <td>ขจรยศ บุญเกศ</td>
+            </tr>
+            <tr>
+                <td>Prename (EN)</td>
+                <td>Mr.</td>
+            </tr>
+            <tr>
+                <td>Name (EN)</td>
+                <td>{{ userProfile.name }}</td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td>8 April 2542</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>Male</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>Studying</td>
+            </tr>
+            <tr>
+                <td>Admission Type</td>
+                <td>Direct</td>
+            </tr>
+            <tr>
+                <td>Year of Admission</td>
+                <td>2560</td>
+            </tr>
+            <tr>
+                <td>Student Year</td>
+                <td>{{ userProfile.student_year }}</td>
+            </tr>
+            <tr>
+                <td>Faculty</td>
+                <td>{{ userProfile.faculty_id }}</td>
+            </tr>
+            <tr>
+                <td>Department</td>
+                <td>{{ userProfile.department_id }}</td>
+            </tr>
+            <tr>
+                <td>Program</td>
+                <td>{{ userProfile.major_id }}</td>
+            </tr>
+            <tr>
+                <td>Contact email</td>
+                <td>{{ userProfile.email }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
