@@ -16,20 +16,117 @@
         </tr>
         <tr>
             <th>Study years</th>
-            <td>4</td>
+            <td>{{ curriculumInfo['Program_Type']['Study_Years'] }}
+                <span *ngIf="curriculumInfo['Program_Type']['Study_Years'] > 1">years</span>
+                <span *ngIf="curriculumInfo['Program_Type']['Study_Years'] <= 1">year</span>
+            </td>
         </tr>
     </table>
 </div>
 <div class="content">
-    <h1>Detail</h1>
+    <h1 *ngIf="curriculumInfo">Detail</h1>
     <table *ngIf="curriculumInfo">
         <tr>
-            <th>Faculty ID : </th>
+            <th>Faculty ID</th>
             <td>{{ curriculumInfo['Faculty_ID'] }}</td>
         </tr>
         <tr>
-            <th>Total credit : </th>
+            <th>Total credit</th>
             <td>{{ curriculumInfo['Structure_Curriculum']['total_credit'] }}</td>
+        </tr>
+        <tr>
+            <th>Revision</th>
+            <td>{{ curriculumInfo['Revision'] }}</td>
+        </tr>
+        <tr>
+            <th class="heading">Program Type</th>
+        </tr>
+        <tr>
+            <th>Languages</th>
+            <td>{{ curriculumInfo['Program_Type']['languages'] }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ curriculumInfo['Program_Type']['type'] }}</td>
+        </tr>
+        <tr>
+            <th>MOU</th>
+            <td>{{ curriculumInfo['Program_Type']['MOU'] }}</td>
+        </tr>
+        <tr>
+            <th>In-condition</th>
+            <td>{{ curriculumInfo['Program_Type']['in_condition'] }}</td>
+        </tr>
+        <tr>
+            <th>Out-condition</th>
+            <td>{{ curriculumInfo['Program_Type']['out_condition'] }}</td>
+        </tr>
+        <tr>
+            <th class="heading">Courses</th>
+        </tr>
+        <tr>
+            <th>กลุ่มวิชาเลือกเสรี</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['free'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th>กลุ่มวิชาเฉพาะหลักสูตร</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มวิชาวิศวกรรมพื้นฐาน</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['specific']['กลุ่มวิชาวิศวกรรมพื้นฐาน'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มเลือกวิชาเฉพาะสาขา</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['specific']['กลุ่มเลือกวิชาเฉพาะสาขา'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มวิชาวิศวกรรมสารสนเทศพื้นฐาน</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['specific']['กลุ่มวิชาวิศวกรรมสารสนเทศพื้นฐาน']
+                }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มวิชาการศึกษาทางเลือก</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['specific']['กลุ่มวิชาการศึกษาทางเลือก'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th>กลุ่มวิชาทั่วไป</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มวิชาคุณค่าแห่งชีวิต</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['genend']['กลุ่มวิชาคุณค่าแห่งชีวิต'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มวิชาภาษาและการสื่อสาร</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['genend']['กลุ่มวิชาภาษาและการสื่อสาร'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มวิชาศิลปะแห่งการจัดการ</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['genend']['กลุ่มวิชาศิลปะแห่งการจัดการ'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มวิชาวิถีแห่งสัมคม</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['genend']['กลุ่มวิชาวิถีแห่งสัมคม'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th class="subheading">วิชาเลือก(เลือกทั้ง 5 กลุ่ม)</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['genend']['วิชาเลือก(เลือกทั้ง 5 กลุ่ม)'] }}</td>
+            <td>หน่วยกิต</td>
+        </tr>
+        <tr>
+            <th class="subheading">กลุ่มวิชาคุณค่าแห่งความคิด</th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['Structure']['genend']['กลุ่มวิชาคุณค่าแห่งความคิด'] }}</td>
+            <td>หน่วยกิต</td>
         </tr>
     </table>
 </div>
