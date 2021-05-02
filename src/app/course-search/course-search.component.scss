@@ -22,6 +22,11 @@ table {
         width: calc(100% / 3);
         border: none;
     }
+
+    tr.mat-row:hover {
+        background-color: rgb(236, 236, 236);
+        cursor: pointer;
+    }
 }
 
 mat-paginator {
