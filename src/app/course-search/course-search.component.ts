@@ -1,10 +1,12 @@
-import { AfterViewInit, ViewChild } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog'; 
 import { Course } from '../models/course.model';
 import { CourseService } from '../services/course.service';
+import { CourseDetailComponent } from '../course-detail/course-detail.component';
 
 @Component({
   selector: 'app-course-search',
@@ -19,7 +21,7 @@ export class CourseSearchComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private courseService: CourseService) {
+  constructor(private courseService: CourseService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -46,4 +48,7 @@ export class CourseSearchComponent implements OnInit{
     }
   }
 
+  openDialog(course) {
+    let dialogRef = this.dialog.open(CourseDetailComponent, {width: '50vw' ,data: course})
+  }
 }

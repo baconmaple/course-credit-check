@@ -1,0 +1,21 @@
+<div class="header">
+    <div>
+        <p>{{ data['id'] }}</p>
+    </div>
+    <div>
+        <p>{{ data['title_th'] }}</p>
+        <p>{{ data['title_en'] }}</p>
+        <p>prerequisite : {{ data['prerequisite'] }}</p>
+    </div>
+    <div>
+        <p>Credit</p>
+        <p>{{ data['credit'] }} {{ data['credit_struct'] }}</p>
+    </div>
+</div>
+<div class="description">
+    <p>{{ data['description_th'] }}</p>
+    <p>{{ data['description_en'] }}</p>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
