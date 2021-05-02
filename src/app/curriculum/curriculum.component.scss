@@ -1,0 +1,33 @@
+.header {
+  th {
+    padding-right: 4rem;
+  }
+}
+
+.content {
+  margin-top: 1rem;
+
+  h1 {
+    margin-left: 1rem;
+  }
+
+  th {
+    padding-right: 2rem;
+  }
+}
+
+.header,
+.content {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+
+  th {
+    text-align: start;
+    font-weight: 500;
+  }
+
+  .rowspan {
+    padding-bottom: 0.5rem;
+  }
+}

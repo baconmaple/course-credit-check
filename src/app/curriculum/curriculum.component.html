@@ -1,1 +1,35 @@
-<p>curriculum works!</p>
+<div class="header">
+    <table *ngIf="curriculumInfo">
+        <tr>
+            <th rowspan="2">Title</th>
+            <td>{{ curriculumInfo['Title']['thai'] }}</td>
+        </tr>
+        <tr>
+            <td class="rowspan">{{ curriculumInfo['Title']['eng'] }}</td>
+        </tr>
+        <tr>
+            <th rowspan="2">Degree</th>
+            <td>{{ curriculumInfo['Degree_Title']['full_name']['thai'] }}</td>
+        </tr>
+        <tr>
+            <td class="rowspan">{{ curriculumInfo['Degree_Title']['full_name']['eng'] }}</td>
+        </tr>
+        <tr>
+            <th>Study years</th>
+            <td>4</td>
+        </tr>
+    </table>
+</div>
+<div class="content">
+    <h1>Detail</h1>
+    <table *ngIf="curriculumInfo">
+        <tr>
+            <th>Faculty ID : </th>
+            <td>{{ curriculumInfo['Faculty_ID'] }}</td>
+        </tr>
+        <tr>
+            <th>Total credit : </th>
+            <td>{{ curriculumInfo['Structure_Curriculum']['total_credit'] }}</td>
+        </tr>
+    </table>
+</div>
