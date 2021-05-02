@@ -1,0 +1,36 @@
+h1 {
+    font-size: 1.25rem;
+}
+
+input {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+table {
+    width: 100%;
+    background-color: transparent;
+    th {
+        font-weight: 500;
+        border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+    td {
+        width: calc(100% / 3);
+        border: none;
+    }
+}
+
+mat-paginator {
+    background-color: transparent;
+}
+
+.course-container {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+}

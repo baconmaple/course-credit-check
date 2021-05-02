@@ -13,6 +13,7 @@ import { CurriculumComponent } from './curriculum/curriculum.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TranscriptComponent } from './transcript/transcript.component';
 import { NavComponent } from './nav/nav.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavComponent } from './nav/nav.component';
     CurriculumComponent,
     DashboardComponent,
     TranscriptComponent,
-    NavComponent
+    NavComponent,
+    CourseDetailComponent
   ],
   imports: [
     AppRoutingModule,

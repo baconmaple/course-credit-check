@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    flex-direction: row;
+
+    div {
+        margin: 1rem;
+    }
+}
+
+.description {
+    p {
+        text-indent: 1rem;
+    }
+}
