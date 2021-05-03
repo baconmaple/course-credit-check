@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TranscriptComponent } from './transcript/transcript.component';
 import { NavComponent } from './nav/nav.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
+import { ProfileCardComponent } from './profile-card/profile-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CourseDetailComponent } from './course-detail/course-detail.component';
     DashboardComponent,
     TranscriptComponent,
     NavComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    ProfileCardComponent
   ],
   imports: [
     AppRoutingModule,

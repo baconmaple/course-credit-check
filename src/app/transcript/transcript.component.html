@@ -1,1 +1,33 @@
-<p>transcript works!</p>
+<h2>Transcript</h2>
+
+<div *ngFor="let semester of registerCourseList" class="semester">
+  <div>
+    <h4><b>ปี {{ this.semester.year }} ภาคเรียนที่ {{ this.semester.semester }}</b></h4>
+
+    <!-- Register Course -->
+    <table mat-table [dataSource]="semester.courses">
+      <!-- ID Column -->
+      <ng-container matColumnDef="course_id">
+        <th mat-header-cell *matHeaderCellDef>Course ID.</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.course.course_id }}
+        </td>
+      </ng-container>
+  
+      <!-- Course Name Column -->
+      <ng-container matColumnDef="course_title">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.course.title }}</td>
+      </ng-container>
+  
+      <!-- Credit Column -->
+      <ng-container matColumnDef="grade">
+        <th mat-header-cell *matHeaderCellDef>Grade</th>
+        <td mat-cell *matCellDef="let element">{{ element.grade }}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="registerDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: registerDisplayedColumns"></tr>
+    </table>
+  </div>
+</div>
