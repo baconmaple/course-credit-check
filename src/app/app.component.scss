@@ -20,11 +20,15 @@ mat-drawer-container {
 
 mat-drawer {
   background-color: #ff964f;
-  width: 250px;
+  width: 335px;
   padding-top: 2%;
 }
 
 mat-drawer-content {
   height: 100%;
   padding: 2%;
+}
+
+mat-divider {
+  margin-top: 10%;
 }
