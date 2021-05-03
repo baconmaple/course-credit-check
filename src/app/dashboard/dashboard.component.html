@@ -1,18 +1,86 @@
-<mat-card>
-  <p>หน่วยกิตทั้งหมด</p>
-  <p>หน่วยกิตที่ลงไปแล้ว</p>
-  <p>หน่วยกิตคงเหลือ</p>
+<mat-card class="credit-info-container">
+  <div>
+    <p><b>หน่วยกิตทั้งหมด:</b> {{ creditInfo["Credit"]["Curriculum_credit"] }} หน่วยกิต</p>
+    <p><b>หน่วยกิตที่ลงไปแล้ว:</b> {{ creditInfo["Credit"]["Presemester_credit"] }} หน่วยกิต</p>
+    <p><b>หน่วยกิตคงเหลือ:</b> {{ creditInfo["Credit"]["Needed_credit"] }} หน่วยกิต</p>
+  </div>
+  <div>
+    <p><b>หมวดวิชาที่ต้องลง</b></p>
+    <div *ngFor="let item of remainCreditList">
+      <span><b>{{ item["key"] }}: </b></span>
+      <span>{{ item["credit"] }} หน่วยกิต</span>
+    </div>
+  </div>
 </mat-card>
 
-<div>
-    <mat-form-field appearance="outline">
-        <mat-label>Toppings</mat-label>
-        <mat-select [formControl]="toppings">
-          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+<div class="filter">
+  <mat-form-field appearance="outline">
+    <mat-label>ปีการศีกษา</mat-label>
+    <mat-select [formControl]="filter" (selectionChange)="handlefilter()">
+      <mat-option *ngFor="let filter of filterOptions" [value]="filter.value">{{
+        filter.displayText
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
 
 <mat-card>
-    หมวดวิชา
+  <!-- Register Course -->
+  <div *ngIf="dataSourceRegister.length != 0">
+    <table mat-table [dataSource]="dataSourceRegister">
+      <!-- ID Column -->
+      <ng-container matColumnDef="course_id">
+        <th mat-header-cell *matHeaderCellDef>Course ID.</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.course.course_id }}
+        </td>
+      </ng-container>
+
+      <!-- Course Name Column -->
+      <ng-container matColumnDef="course_title">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.course.title }}</td>
+      </ng-container>
+
+      <!-- Credit Column -->
+      <ng-container matColumnDef="grade">
+        <th mat-header-cell *matHeaderCellDef>Grade</th>
+        <td mat-cell *matCellDef="let element">{{ element.grade }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="registerDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: registerDisplayedColumns"></tr>
+    </table>
+  </div>
+
+  <!-- Unregister Course -->
+
+    <table mat-table [dataSource]="dataSourceUnregister">
+      <!-- ID Column -->
+      <ng-container matColumnDef="course_id">
+        <th mat-header-cell *matHeaderCellDef>Course ID.</th>
+        <td mat-cell *matCellDef="let element">{{ element.course_id }}</td>
+      </ng-container>
+
+      <!-- Course Name Column -->
+      <ng-container matColumnDef="course_title">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+
+      <!-- Credit Column -->
+      <ng-container matColumnDef="credit">
+        <th mat-header-cell *matHeaderCellDef>Credit</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.credit }} หน่วยกิต
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="unregisterDisplayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: unregisterDisplayedColumns"
+      ></tr>
+    </table>
+
 </mat-card>

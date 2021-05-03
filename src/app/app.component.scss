@@ -1,9 +1,3 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
 mat-drawer-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -20,6 +14,8 @@ mat-drawer-content::-webkit-scrollbar-thumb {
 
 mat-drawer-container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 mat-drawer {

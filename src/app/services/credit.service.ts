@@ -16,4 +16,18 @@ export class CreditService {
       observe: 'body',
     })
   }
+
+  getRegisteredCourse(studentID: string) {
+    return this.http.get<any>(`${environment.baseUrl1}/student/registered/${studentID}`, {
+      headers: { 'content-type': 'application/json' },
+      observe: 'body',
+    })
+  }
+
+  getUnregisteredCourse(studentID: string) {
+    return this.http.get<any>(`${environment.baseUrl1}/student/unregistered/${studentID}`, {
+      headers: { 'content-type': 'application/json' },
+      observe: 'body',
+    })
+  }
 }
