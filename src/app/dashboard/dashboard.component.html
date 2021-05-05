@@ -58,7 +58,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="registerDisplayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: registerDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: registerDisplayedColumns" (click)="openDialog(row)"></tr>
     </table>
   </div>
 
@@ -89,6 +89,7 @@
       <tr
         mat-row
         *matRowDef="let row; columns: unregisterDisplayedColumns"
+        (click)="openDialog(row)"
       ></tr>
     </table>
   </div>

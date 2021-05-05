@@ -1,8 +1,12 @@
+import { Course } from './../models/course.model';
+import { CourseService } from './../services/course.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 import { CreditService } from './../services/credit.service';
 import { CreditInfo } from './../models/credit.model';
+import { CourseDetailComponent } from './../course-detail/course-detail.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,15 +19,15 @@ export class DashboardComponent implements OnInit {
     displayText: string;
     value: { year: number; semester: number };
   }[] = [
-      { displayText: 'ปี 4 เทอม 2', value: { year: 4, semester: 2 } },
-      { displayText: 'ปี 4 เทอม 1', value: { year: 4, semester: 1 } },
-      { displayText: 'ปี 3 เทอม 2', value: { year: 3, semester: 2 } },
-      { displayText: 'ปี 3 เทอม 1', value: { year: 3, semester: 1 } },
-      { displayText: 'ปี 2 เทอม 2', value: { year: 2, semester: 2 } },
-      { displayText: 'ปี 2 เทอม 1', value: { year: 2, semester: 1 } },
-      { displayText: 'ปี 1 เทอม 2', value: { year: 1, semester: 2 } },
-      { displayText: 'ปี 1 เทอม 1', value: { year: 1, semester: 1 } },
-    ];
+    { displayText: 'ปี 4 เทอม 2', value: { year: 4, semester: 2 } },
+    { displayText: 'ปี 4 เทอม 1', value: { year: 4, semester: 1 } },
+    { displayText: 'ปี 3 เทอม 2', value: { year: 3, semester: 2 } },
+    { displayText: 'ปี 3 เทอม 1', value: { year: 3, semester: 1 } },
+    { displayText: 'ปี 2 เทอม 2', value: { year: 2, semester: 2 } },
+    { displayText: 'ปี 2 เทอม 1', value: { year: 2, semester: 1 } },
+    { displayText: 'ปี 1 เทอม 2', value: { year: 1, semester: 2 } },
+    { displayText: 'ปี 1 เทอม 1', value: { year: 1, semester: 1 } },
+  ];
 
   creditInfo: CreditInfo = null;
   remainCreditList = [];
@@ -31,6 +35,7 @@ export class DashboardComponent implements OnInit {
   unregisterCourse;
   dataSourceRegister: any[] = [];
   dataSourceUnregister: any[] = [];
+  allCourses: Course[];
 
   registerDisplayedColumns: string[] = ['course_id', 'course_title', 'grade'];
   unregisterDisplayedColumns: string[] = [
@@ -39,11 +44,16 @@ export class DashboardComponent implements OnInit {
     'credit',
   ];
 
-  constructor(private creditService: CreditService) { }
+  constructor(
+    private creditService: CreditService,
+    private courseService: CourseService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getCredit();
     this.initCourse();
+    this.getAllCourse();
   }
 
   handlefilter(): void {
@@ -51,10 +61,11 @@ export class DashboardComponent implements OnInit {
     this.dataSourceUnregister = [];
     const filterValue = this.filter.value;
     if (filterValue) {
-      if (JSON.stringify(filterValue) == JSON.stringify({ year: 4, semester: 2 })) {
+      if (
+        JSON.stringify(filterValue) == JSON.stringify({ year: 4, semester: 2 })
+      ) {
         this.dataSourceUnregister = this.unregisterCourse;
-      }
-      else {
+      } else {
         for (let index = 0; index < this.registerCourse.length; index++) {
           const element = this.registerCourse[index];
           if (
@@ -96,6 +107,18 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  getAllCourse() {
+    this.courseService.fetchAllCourse().subscribe({
+      next: response => {
+        this.allCourses = response
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+
+  }
+
   initCourse(): void {
     this.creditService.getRegisteredCourse('60010105').subscribe({
       next: (response) => {
@@ -115,6 +138,15 @@ export class DashboardComponent implements OnInit {
       error: (err) => {
         console.log(err);
       },
+    });
+  }
+
+  openDialog(course) {
+    const course_detail = this.allCourses.find(element => element['code_id'] == course['course_id'])
+
+    let dialogRef = this.dialog.open(CourseDetailComponent, {
+      width: '50vw',
+      data: course_detail,
     });
   }
 }

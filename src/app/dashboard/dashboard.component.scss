@@ -1,5 +1,11 @@
 table {
   width: 100%;
+  background-color: transparent;
+
+  tr.mat-row:hover {
+      background-color: rgb(236, 236, 236);
+      cursor: pointer;
+  }
 }
 
 .filter {
@@ -9,8 +15,4 @@ table {
 .credit-info-container {
   display: flex;
   justify-content: space-around;
-}
-
-.remain-credit {
-
 }
