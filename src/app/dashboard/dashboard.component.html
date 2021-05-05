@@ -1,24 +1,22 @@
 <mat-card class="credit-info-container">
   <div>
-    <p>
-      <b>หน่วยกิตทั้งหมด:</b>
-      {{ creditInfo["Credit"]["Curriculum_credit"] }} หน่วยกิต
+    <p >
+      <b>หน่วยกิตทั้งหมด:</b>&nbsp;
+      <span *ngIf="creditInfo">{{ creditInfo["Credit"]["Curriculum_credit"] }}</span> หน่วยกิต
     </p>
     <p>
-      <b>หน่วยกิตที่ลงไปแล้ว:</b>
-      {{ creditInfo["Credit"]["Presemester_credit"] }} หน่วยกิต
+      <b>หน่วยกิตที่ลงไปแล้ว:</b>&nbsp;
+      <span *ngIf="creditInfo">{{ creditInfo["Credit"]["Presemester_credit"] }}</span> หน่วยกิต
     </p>
     <p>
-      <b>หน่วยกิตคงเหลือ:</b>
-      {{ creditInfo["Credit"]["Needed_credit"] }} หน่วยกิต
+      <b>หน่วยกิตคงเหลือ:</b>&nbsp;
+      <span *ngIf="creditInfo">{{ creditInfo["Credit"]["Needed_credit"] }}</span> หน่วยกิต
     </p>
   </div>
   <div>
     <p><b>หมวดวิชาที่ต้องลง</b></p>
     <div *ngFor="let item of remainCreditList">
-      <span
-        ><b>{{ item["key"] }}: </b></span
-      >
+      <span><b>{{ item["key"] }}: &nbsp;</b></span>
       <span>{{ item["credit"] }} หน่วยกิต</span>
     </div>
   </div>

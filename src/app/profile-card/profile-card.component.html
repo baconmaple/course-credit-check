@@ -2,8 +2,8 @@
   <mat-card>
     <mat-card-header>
       <div mat-card-avatar class="cover-image"></div>
-      <mat-card-title>{{ profile.name }}</mat-card-title>
-      <mat-card-subtitle>{{ profile.student_id }}</mat-card-subtitle>
+      <mat-card-title *ngIf="profile">{{ profile.name }}</mat-card-title>
+      <mat-card-subtitle *ngIf="profile">{{ profile.student_id }}</mat-card-subtitle>
     </mat-card-header>
     <a routerLink="/profile">more profile</a>
   </mat-card>

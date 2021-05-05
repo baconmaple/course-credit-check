@@ -15,15 +15,15 @@ export class DashboardComponent implements OnInit {
     displayText: string;
     value: { year: number; semester: number };
   }[] = [
-    { displayText: 'ปี 4 เทอม 2', value: { year: 4, semester: 2 } },
-    { displayText: 'ปี 4 เทอม 1', value: { year: 4, semester: 1 } },
-    { displayText: 'ปี 3 เทอม 2', value: { year: 3, semester: 2 } },
-    { displayText: 'ปี 3 เทอม 1', value: { year: 3, semester: 1 } },
-    { displayText: 'ปี 2 เทอม 2', value: { year: 2, semester: 2 } },
-    { displayText: 'ปี 2 เทอม 1', value: { year: 2, semester: 1 } },
-    { displayText: 'ปี 1 เทอม 2', value: { year: 1, semester: 2 } },
-    { displayText: 'ปี 1 เทอม 1', value: { year: 1, semester: 1 } },
-  ];
+      { displayText: 'ปี 4 เทอม 2', value: { year: 4, semester: 2 } },
+      { displayText: 'ปี 4 เทอม 1', value: { year: 4, semester: 1 } },
+      { displayText: 'ปี 3 เทอม 2', value: { year: 3, semester: 2 } },
+      { displayText: 'ปี 3 เทอม 1', value: { year: 3, semester: 1 } },
+      { displayText: 'ปี 2 เทอม 2', value: { year: 2, semester: 2 } },
+      { displayText: 'ปี 2 เทอม 1', value: { year: 2, semester: 1 } },
+      { displayText: 'ปี 1 เทอม 2', value: { year: 1, semester: 2 } },
+      { displayText: 'ปี 1 เทอม 1', value: { year: 1, semester: 1 } },
+    ];
 
   creditInfo: CreditInfo = null;
   remainCreditList = [];
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
     'credit',
   ];
 
-  constructor(private creditService: CreditService) {}
+  constructor(private creditService: CreditService) { }
 
   ngOnInit(): void {
     this.getCredit();
@@ -50,21 +50,21 @@ export class DashboardComponent implements OnInit {
     this.dataSourceRegister = [];
     this.dataSourceUnregister = [];
     const filterValue = this.filter.value;
-    console.log(this.unregisterCourse)
-
     if (filterValue) {
-      for (let index = 0; index < this.registerCourse.length; index++) {
-        const element = this.registerCourse[index];
-        if (
-          filterValue.year == element.year &&
-          filterValue.semester == element.semester
-        ) {
-          this.dataSourceRegister = element.courses;
-          break;
-        }
-      }
-      if (this.dataSourceRegister.length == 0) {
+      if (JSON.stringify(filterValue) == JSON.stringify({ year: 4, semester: 2 })) {
         this.dataSourceUnregister = this.unregisterCourse;
+      }
+      else {
+        for (let index = 0; index < this.registerCourse.length; index++) {
+          const element = this.registerCourse[index];
+          if (
+            filterValue.year == element.year &&
+            filterValue.semester == element.semester
+          ) {
+            this.dataSourceRegister = element.courses;
+            break;
+          }
+        }
       }
     }
   }
@@ -72,7 +72,6 @@ export class DashboardComponent implements OnInit {
   getCredit() {
     this.creditService.creditChecking('60010105').subscribe({
       next: (response) => {
-        console.log(response);
         this.creditInfo = response;
         this.remainCredit(response);
       },
@@ -100,7 +99,6 @@ export class DashboardComponent implements OnInit {
   initCourse(): void {
     this.creditService.getRegisteredCourse('60010105').subscribe({
       next: (response) => {
-        console.log(response);
         this.registerCourse = response;
       },
       error: (err) => {
